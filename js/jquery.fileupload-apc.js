@@ -86,13 +86,15 @@
                     data: { "apc" : true, "apccode" : options.apccode }
                 }).done(function(o) {
                     // Set the apc_data progress.
-                    var r = $.parseJSON(o), e = $.Event('progress', {
-                        lengthComputable: true,
-                        loaded: r.current,
-                        total: r.total
-                    }), now = (new Date()).getTime(), loaded = Math.floor(r.current);
+                    var r = $.parseJSON(o), e = false, now = false;
                     if (r) {
                         r = r.apc_data;
+                        e = $.Event('progress', {
+                            lengthComputable: true,
+                            loaded: r.current,
+                            total: r.total
+                        });
+                        now = (new Date()).getTime(), loaded = Math.floor(r.current);
                         // Add the difference from the previously loaded state
                         // to the global loaded counter:
                         self._progress.total = r.total;
