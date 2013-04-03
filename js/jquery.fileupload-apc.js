@@ -22,7 +22,7 @@
     }
 }(function ($) {
     'use strict';
-    
+
     $.widget('blueimp.fileupload', $.blueimp.fileupload, {
 
         options: {
@@ -36,7 +36,7 @@
             apcTimeout: 1000,
             // The default APC variable name to be included with the post.
             apcVarname: "APC_UPLOAD_PROGRESS",
-            
+
             // Overwrite the send function to prevent progress from going
             // directly to 100% during APC file uploads.
             send: function (e, data) {
@@ -69,7 +69,7 @@
                 return that._trigger('sent', e, data);
             }
         },
-                
+
         _apcProgress: function(options) {
             var that = this;
             // Generate a random APC key.
@@ -86,14 +86,13 @@
                     data: { "apc" : true, "apccode" : options.apccode }
                 }).done(function(o) {
                     // Set the apc_data progress.
-                    var r = $.parseJSON(o);
+                    var r = $.parseJSON(o), e = $.Event('progress', {
+                        lengthComputable: true,
+                        loaded: r.current,
+                        total: r.total
+                    }), now = (new Date()).getTime(), loaded = Math.floor(r.current);
                     if (r) {
                         r = r.apc_data;
-                        var e = $.Event('progress', {
-                            lengthComputable: true,
-                            loaded: r.current,
-                            total: r.total
-                        }), now = (new Date()).getTime(), loaded = Math.floor(r.current);
                         // Add the difference from the previously loaded state
                         // to the global loaded counter:
                         self._progress.total = r.total;
@@ -152,7 +151,7 @@
                 this._initIframeSettings(options);
             }
         },
-        
+
         _onAlways: function (jqXHRorResult, textStatus, jqXHRorError, options) {
             if (this.apct) {
                 clearTimeout(this.apct);
