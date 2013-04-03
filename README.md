@@ -1,4 +1,4 @@
-# jQuery File Upload Plugin
+# jQuery File Upload Plugin - with PHP APC progress
 
 ## Demo
 [Demo File Upload](http://blueimp.github.com/jQuery-File-Upload/)
