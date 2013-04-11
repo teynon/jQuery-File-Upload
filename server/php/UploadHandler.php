@@ -836,7 +836,7 @@ class UploadHandler
         $status = false;
         
         if (isset($_REQUEST['apccode'])) {
-            $status = apc_fetch("upload_" . $_REQUEST['apccode']);
+            $status = apc_fetch($_REQUEST['apccode']);
             $success = true;
          }
          

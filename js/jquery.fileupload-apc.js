@@ -36,6 +36,8 @@
             apcTimeout: 1000,
             // The default APC variable name to be included with the post.
             apcVarname: "APC_UPLOAD_PROGRESS",
+            // The default APC prefix for the apc code.
+            apcPrefix: "upload_",
 
             // Overwrite the send function to prevent progress from going
             // directly to 100% during APC file uploads.
@@ -97,7 +99,7 @@
                 $.ajax({
                     url: options.url,
                     type: "POST",
-                    data: { "apc" : true, "apccode" : options.apccode }
+                    data: { "apc" : true, "apccode" : options.apcPrefix + options.apccode }
                 }).done(function(o) {
                     // Set the apc_data progress.
                     var r = $.parseJSON(o), e = false, now = false;
