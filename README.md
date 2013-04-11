@@ -1,6 +1,3 @@
-## About APC
-PHP APC is a PECL extension that enables caching of files. With the correct [runtime configuration](http://www.php.net/manual/en/apc.configuration.php#ini.apc.rfc1867), it can cache file information during file uploads and provide information about those files such as current size, total size, and bitrate.
-
 ## Setup
 * [How to setup the plugin on your website](https://github.com/blueimp/jQuery-File-Upload/wiki/Setup)
 * [How to use only the basic plugin (minimal setup guide).](https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin)
@@ -34,6 +31,9 @@ $('#fileupload').fileupload({
     apcPrefix: "myprefix_" // Use only if you have changed apc.rfc1867_prefix (http://www.php.net/manual/en/apc.configuration.php#ini.apc.rfc1867-prefix)
 });
 ```
+
+## About APC
+PHP APC is a PECL extension that enables caching of files. With the correct [runtime configuration](http://www.php.net/manual/en/apc.configuration.php#ini.apc.rfc1867), it can cache file information during file uploads and provide information about those files such as current size, total size, and bitrate.
 
 ## License
 Released under the [MIT license](http://www.opensource.org/licenses/MIT).
