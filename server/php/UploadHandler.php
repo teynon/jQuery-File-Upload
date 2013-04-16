@@ -55,7 +55,7 @@ class UploadHandler
                 'PUT',
                 'PATCH',
                 'DELETE',
-                'APC',
+                'APC'
             ),
             'access_control_allow_headers' => array(
                 'Content-Type',
